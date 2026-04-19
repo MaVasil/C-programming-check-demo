@@ -1,0 +1,17 @@
+name: C Code Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install GCC
+        run: sudo apt update && sudo apt install -y gcc
+
+      - name: Compile C Code
+        run: gcc -Wall -Werror *.c -o output
